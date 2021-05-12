@@ -1,0 +1,233 @@
+%% The first command in your LaTeX source must be the \documentclass command.
+%%
+%% Options:
+%% twocolumn : Two column layout.
+\documentclass[
+% twocolumn,
+]{ceurart}
+
+%%
+%% One can fix some overfulls
+% \sloppy
+\usepackage{todonotes}
+\usepackage{microtype}
+\usepackage{float}
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% Rights management information.
+%% CC-BY is default license. Do not change!
+\copyrightyear{2021}
+\copyrightclause{Copyright for this paper by its authors.
+  Use permitted under Creative Commons License Attribution 4.0
+  International (CC BY 4.0).}
+
+%%
+%% This command is for the conference information
+%\conference{IberLEF 2020, September 2020, Málaga, Spain}
+\conference{Proceedings of the Iberian Languages Evaluation Forum (IberLEF 2021)}
+
+%%
+%% The "title" command
+\title{$<$TEAM$>$ at eHealth-KD Challenge 2021\newline{$<$SHORT SUBTITLE$>$}}
+
+
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+\author[1]{Name Surname}[%
+orcid=0000-0000-0000-000,
+email=n.surname@example.com,
+]
+\author[2,3]{Name Surname}[%
+orcid=0000-0000-0000-000,
+email=n.surname@example.com,
+]
+
+\address[1]{Institution A, City, Country}
+\address[2]{Institution B, City, Country}
+\address[3]{Institution C, City, Country}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+The abstract should briefly summarise the contents of the paper in 150--250 words.
+\end{abstract}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\begin{keywords}
+  eHealth \sep
+  Knowledge Discovery \sep
+  Natural Language Processing \sep
+  Machine Learning
+\end{keywords}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+% \setcounter{page}{XX} We will let you know which page counter to use for the camera ready version
+\pagestyle{plain}
+
+\section*{General Details}
+
+\begin{itemize}
+    \item Articles must be written in English.
+    \item The minimum length of the paper should be 5 (mandatory minimum) and up to 10 pages plus references.
+    \item Please respect the title format, where \textit{$<$TEAM$>$} is the officially published team identifier in the eHealth-KD 2021 website, and use \textit{$<$SHORT SUBTITLE$>$} for additional details. 
+    Contact the challenge organisers for any changes to the team names.
+\end{itemize}
+
+\textbf{NOTE: This section is not meant to be part of the final version of your paper.}
+
+\section{Introduction}
+
+Write down a general overview of your system. This might include:
+\begin{itemize}
+    \item Motivation for choosing the selected architectures in the context of the challenge.
+    \item Citations to any external resources or strategies used by your system.
+\end{itemize}
+
+Do not focus on describing the task and/or the corpus. Instead, include a citation to the Overview paper, and at most provide a very short
+introduction to the challenge if you consider it relevant.
+A preliminary citation is provided in this template~\cite{overview_ehealthkd2021}, which will be updated
+in due time.
+
+\section{System Description}
+
+Describe the architecture of your system in a concise and precise manner, such that other participants might be able to reproduce your work.
+Make sure to include the following information:
+
+\begin{itemize}
+    \item Your system's architecture.
+        \begin{itemize}
+            \item For example, if your system is based on deep learning techniques, mention the corresponding layers and other components.
+            \item Hyperparameters (e.g., layer sizes, dropout rates).
+        \end{itemize}
+    \item Input handling.
+        \begin{itemize}
+            \item Sentence tokenization.
+            \item Token representation and encoding.
+        \end{itemize}
+    \item Output handling.
+        \begin{itemize}
+            \item How does the entity extraction task translate to your system (e.g., sequence labelling problem, takes entities overlaps into consideration)?
+            \item How does the relation extraction task translate to your system (e.g, pairwise queries, focus on a single entity)?
+        \end{itemize}
+    \item System training.
+    \begin{itemize}
+        \item In what infrastructure your system was trained?
+        \item Which collections (i.e. train, dev, ensembled corpora) of the dataset you used for training, validation, etc.?
+    \end{itemize}
+\end{itemize}
+
+Consider the following questions while writing your working notes:
+
+\begin{itemize}
+    \item What is the general approach your system fits best into?
+        \begin{itemize}
+            \item Deep learning based?
+            \item Classical ML algorithms?
+            \item Handcrafted rules?
+            \item NLP features?
+            \item Other?
+        \end{itemize} 
+    \item Does your system solves task A and B jointly? Or with several independent models? Do they share any layers, parameters, or components in general?
+    \item Does your system use pretrained word embeddings? Custom ones?
+        \begin{itemize}
+            \item Which one?
+            \item Trained on a general domain corpora? Medicine related?
+        \end{itemize}
+    \item Does your system use pretrained contextual embeddings such as BERT?
+        \begin{itemize}
+            \item Which one?
+            \item How you incorporate it? Fine-tuning? Pre-computed features?
+        \end{itemize}
+    \item Does your system used additional syntactic features?
+        \begin{itemize}
+            \item Which ones?
+            \item POS-tag information?
+            \item Dependency parsing information?
+            \item char level representations?
+        \end{itemize}
+    \item Does your system extend the training data available with any other extra resources?
+        \begin{itemize}
+            \item Which one?
+            \item Does it use sentences from the previous editions of the competition?
+        \end{itemize}
+    \item Does your system use any other type of external knowledge?
+        \begin{itemize}
+            \item Which one?
+            \item How do you think it contributes to your system?
+        \end{itemize}
+    \item Does your system applies attention-based techniques to solve any task?
+        \begin{itemize}
+            \item Which one?
+            \item How?
+        \end{itemize}
+    \item Does your system uses any strategy for additional performance boosting, such as ensemble methods?
+        \begin{itemize}
+            \item Which one?
+            \item What are the relevant parameters and overall details?
+        \end{itemize}
+    \item Do you perform any type of hyperparameter tuning or architecture search?
+        \begin{itemize}
+            \item Do you use an external tool (e.g., \textit{AutoSklearn}, \textit{AutoKeras}), or a 
+                  custom solution?
+            \item How did you split the training data for cross-validation purposes?
+            \item What are the relevant parameters, execution time, resources, etc.?
+        \end{itemize}
+    \item About the cross-domain and multi-lingual nature of the task, does your system take any additional considerations into account?
+        \begin{itemize}
+            \item Which ones?
+            \item Were they taken into account the same way for all scenarios? Or does a particular data or architecture was used to solve each particular scenario, domain, or language?
+        \end{itemize}
+\end{itemize}
+
+The purpose of these questions is to highlight the kind
+of details we believe the readers will be most interested. 
+Do not take these questions literally nor organise the section as an explicit answer
+to these items, but rather use them to guide your overall system
+description, while organising the text in a coherent narrative.
+If the answer to any of the previous questions is simply ``no'', or it is completely unrelated
+to your approach, then do not mention those elements.
+Likewise, include any additional details that you consider relevant for understanding and
+contextualising your contributions.
+
+\section{Results}
+
+Report the performance achieved by your system in each run and scenario as officially published.
+If your team developed one or more systems that were not submitted to the challenge, feel free to include them in this section, but always noticing that there were not part of the officially evaluated runs.
+Include any tables and figures that you consider relevant.
+
+You can use any officially announced evaluation statistics to compare your results with the ones of other participants , and you can design and discuss other comparison metrics to address the
+issues you consider most relevant with respect to your system.
+
+\textbf{NOTE:} We will share a preliminary Bib-TeX file with all the submitted working notes before the camera ready version, so that you can properly cite other participants.
+
+\section{Discussion}
+
+Though not mandatory, we encourage you to discuss the main insights that can be derived from the performance of each one of your runs. You can include additional experimentation, analysis of the impact of hyperparameters, analysis of feature relevance, etc.
+
+Remember that the most important results of this challenge are not the F1 metrics per-se, but rather
+any interesting findings and insights that help advance the state-of-the-art.
+
+\section{Conclusions}
+
+Share your final conclusions on your systems and any future work recommendations.
+
+%%
+%% Define the bibliography file to be used
+\bibliography{sample-ceur}
+
+\end{document}
+
+%%
+%% End of file
